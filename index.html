@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vaibhav Vikas Gaikwad — Data Scientist & ML Engineer</title>
+  <meta name="description" content="Vaibhav Vikas Gaikwad — Data Scientist & ML Engineer. End-to-end AI and analytics solutions: pipelines, LLM/RAG, forecasting, deployment." />
+  <meta property="og:title" content="Vaibhav Vikas Gaikwad — Portfolio" />
+  <meta property="og:description" content="End-to-end AI and analytics, LLM/RAG, forecasting, dashboards, and deployment." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter','ui-sans-serif','system-ui','-apple-system','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans']
+          }
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+  <style>
+    /* Decorative scrollbar */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #374151; border-radius: 8px; }
+
+    /* Utility-like classes (no @apply so it works with CDN) */
+    .container-narrow { max-width: 72rem; margin-inline: auto; padding-left: 1rem; padding-right: 1rem; }
+    .card {
+      border-radius: 1rem; border: 1px solid #e5e7eb; background: #fff;
+      box-shadow: 0 1px 2px rgba(0,0,0,.05); transition: box-shadow .2s, transform .2s;
+    }
+    .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+    .dark .card { background: #0b1220; border-color: #1f2937; }
+
+    .tag {
+      display:inline-flex; align-items:center; border-radius: 9999px;
+      padding: .25rem .5rem; font-size: .75rem; font-weight: 600;
+      background: #e0f2fe; color: #0369a1;
+    }
+    .dark .tag { background: rgba(12,74,110,.35); color: #7dd3fc; }
+
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+      border-radius: .75rem; padding: .5rem 1rem; font-weight: 600;
+      color:#fff; background:#0284c7; border:1px solid transparent;
+    }
+    .btn:hover { background:#0ea5e9; }
+    .btn:active { background:#0369a1; }
+
+    .btn-ghost {
+      display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+      border-radius: .75rem; padding: .5rem 1rem; font-weight: 600;
+      background: transparent; color: inherit; border:1px solid #cbd5e1;
+    }
+    .btn-ghost:hover { background:#f3f4f6; }
+    .dark .btn-ghost { border-color:#374151; }
+    .dark .btn-ghost:hover { background:#111827; }
+
+    .icon-btn { width: 2.5rem; height: 2.5rem; border-radius: .75rem; display:inline-flex; align-items:center; justify-content:center; }
+    .ring-soft { box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
+
+    /* --- Projects: presentational tweaks + hover tint --- */
+    .project-card { overflow: hidden; }
+    .project-card .thumb { position: relative; }
+    .project-card .project-thumb {
+      border-radius: 0.75rem; /* rounded-xl */
+      outline: 1px solid rgba(255,255,255,.06); /* subtle frame in dark */
+      transition: filter .35s ease, transform .25s ease, box-shadow .25s ease;
+      will-change: filter, transform;
+    }
+    .project-card:hover .project-thumb {
+      /* tasteful color shift + slight pop */
+      filter: hue-rotate(28deg) saturate(1.15) brightness(1.06);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px rgba(0,0,0,.25);
+    }
+    /* optional: light theme frame */
+    :not(.dark) .project-card .project-thumb { outline-color: rgba(15, 23, 42, .08); }
+    /* slight overlay vignette on hover for depth */
+    .project-card .thumb-overlay {
+      position: absolute; inset: 0; border-radius: 0.75rem;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(2,6,23,0.18) 100%);
+      opacity: 0; transition: opacity .25s ease; pointer-events: none;
+    }
+    .project-card:hover .thumb-overlay { opacity: 1; }
+
+    /* ---------- Modal ---------- */
+    .modal-backdrop{
+      position:fixed; inset:0; z-index:60;
+      display:none; place-items:center;
+      background:rgba(2,6,23,.6); backdrop-filter: blur(2px);
+    }
+    .modal-backdrop.open{ display:grid; }
+    .modal-card{ width:min(960px, 92vw); border-radius:1rem; overflow:hidden; }
+    .modal-enter{ transform: translateY(6px) scale(.98); opacity:0; }
+    .modal-enter.modal-enter-active{ transition: all .18s ease; transform:none; opacity:1; }
+
+    /* ---------- Skeletons ---------- */
+    .skel {
+      border-radius: .75rem;
+      background: linear-gradient(90deg, #0b1220 0%, #1f2937 50%, #0b1220 100%);
+      background-size: 200% 100%;
+      animation: skel 1.2s linear infinite;
+    }
+    :not(.dark) .skel {
+      background: linear-gradient(90deg, #111827 0%, #1f2937 50%, #111827 100%);
+    }
+    @keyframes skel { 0% {background-position: 200% 0} 100% {background-position: -200% 0} }
+  </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/60 dark:bg-gray-950/60 border-b border-gray-200 dark:border-gray-800">
+    <nav class="container-narrow flex items-center justify-between h-16">
+      <a href="#home" class="text-lg font-semibold tracking-tight">Vaibhav Vikas Gaikwad</a>
+
+      <div class="hidden md:flex items-center gap-4">
+        <a class="hover:text-sky-400" href="#projects">Projects</a>
+        <a class="hover:text-sky-400" href="#skills">Skills</a>
+        <a class="hover:text-sky-400" href="#certifications">Certifications</a>
+        <a class="hover:text-sky-400" href="#resume">Resume</a>
+        <a class="hover:text-sky-400" href="#contact">Contact</a>
+
+        <!-- Icon buttons -->
+        <a href="https://www.linkedin.com/in/vaibhav-vikas-gaikwad/" target="_blank" rel="noreferrer"
+           class="icon-btn ring-soft border border-gray-700/50 hover:bg-gray-800 transition" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true">
+            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zM8 8h3.8v2.05h.05C12.6 8.9 14.1 8 16.25 8 21 8 22 10.95 22 15.18V23h-4v-6.5c0-1.55-.03-3.54-2.16-3.54-2.16 0-2.49 1.69-2.49 3.43V23H8V8z"/>
+          </svg>
+        </a>
+        <a href="https://github.com/vaibhavgaikwad7" target="_blank" rel="noreferrer"
+           class="icon-btn ring-soft border border-gray-700/50 hover:bg-gray-800 transition" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true">
+            <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.33-1.77-1.33-1.77-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.07 1.83 2.82 1.3 3.5.99.11-.78.42-1.3.77-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.9 1.24 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.83.58A12 12 0 0 0 12 .5z"/>
+          </svg>
+        </a>
+
+        <!-- Theme toggle (logic is in script.js) -->
+        <button id="themeToggle" class="btn-ghost" aria-label="Toggle theme" aria-pressed="false" title="Toggle theme">
+          <span id="themeIcon">☾</span>
+        </button>
+      </div>
+    </nav>
+    <div class="h-[2px] w-full bg-gradient-to-r from-sky-500 via-emerald-400 to-fuchsia-500"></div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="container-narrow pt-16 pb-8">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-sky-400 font-semibold">Open to work — United States</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mt-2 bg-gradient-to-r from-sky-400 via-emerald-400 to-fuchsia-400 bg-clip-text text-transparent">
+          Vaibhav Vikas Gaikwad
+        </h1>
+        <p class="mt-1 text-xl md:text-2xl text-gray-300/90">
+          Data Scientist · Data Analyst · Data Engineer · ML Engineer
+        </p>
+        <p class="mt-4 text-lg leading-relaxed text-gray-300">
+          🚀 Data Scientist & ML Engineer with expertise in building end-to-end AI and analytics solutions across healthcare, finance, and enterprise domains. I design and deploy scalable data pipelines, predictive models, and agentic AI workflows that translate raw data into actionable insights. My work spans from generative AI applications (multi-agent systems, LLM evaluation, RAG pipelines) to applied data science (time-series forecasting, market analytics, credibility detection). I have built full-stack solutions with Python, SQL, PyTorch, FastAPI, and Streamlit, orchestrated with AWS, Azure, Docker, and Kubernetes, and automated via CI/CD pipelines. I am passionate about combining advanced ML/GenAI techniques with data storytelling—whether through interactive dashboards (Tableau, Power BI) or production-ready APIs—so that decision-makers can act with clarity and confidence.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a class="btn" href="assets/resume.pdf" download>Download Resume</a>
+          <a class="btn-ghost" href="mailto:gaikwadvaibhav114@gmail.com">Email me</a>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-2 text-sm">
+          <span class="tag">LLM / RAG</span>
+          <span class="tag">Time-series</span>
+          <span class="tag">Agentic AI</span>
+          <span class="tag">MLOps</span>
+          <span class="tag">Dashboards</span>
+        </div>
+      </div>
+
+      <div class="flex md:justify-end">
+        <img
+          src="assets/headshot.jpeg"
+          alt="Vaibhav Vikas Gaikwad"
+          class="w-72 h-72 md:w-[22rem] md:h-[22rem] lg:w-[26rem] lg:h-[26rem]
+           aspect-square object-cover rounded-3xl shadow-2xl ring-soft"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE & EDUCATION -->
+  <section id="experience" class="py-16 border-t border-gray-200 dark:border-gray-800">
+    <div class="container-narrow">
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- ==================== EDUCATION ==================== -->
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Education</h2>
+
+          <div class="relative mt-6">
+            <div class="absolute left-[9px] top-0 bottom-0 w-px bg-sky-500/30"></div>
+
+            <!-- MSc -->
+            <article class="relative pl-8 pb-10">
+              <span class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-white dark:bg-gray-950 ring-2 ring-sky-600"></span>
+              <h3 class="font-semibold">MS in Applied Data Science</h3>
+              <div class="text-sm text-slate-400">2023 – 2025</div>
+              <div class="italic text-slate-300 mt-1">Syracuse University, Syracuse, NY</div>
+              <p class="mt-3 text-[15px] leading-relaxed text-slate-300">
+                Coursework & projects across data analysis, ML, GenAI, big-data tools, and visualization (Python, SQL, Tableau, AWS, PySpark).
+                Served as Teaching Assistant and contributed to research in modeling and AI applications.
+              </p>
+            </article>
+
+            <!-- BE -->
+            <article class="relative pl-8">
+              <span class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-white dark:bg-gray-950 ring-2 ring-sky-600"></span>
+              <h3 class="font-semibold">Bachelor of Engineering in Computer Engineering</h3>
+              <div class="text-sm text-slate-400">2018 – 2022</div>
+              <div class="italic text-slate-300 mt-1">Mumbai University, Mumbai, India</div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ==================== EXPERIENCE ==================== -->
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Professional Experience</h2>
+
+          <div class="relative mt-6">
+            <div class="absolute left-[9px] top-0 bottom-0 w-px bg-sky-500/30"></div>
+
+            <!-- Research Analyst -->
+            <article class="relative pl-8 pb-10">
+              <span class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-white dark:bg-gray-950 ring-2 ring-sky-600"></span>
+              <h3 class="font-semibold">Research Analyst</h3>
+              <div class="text-sm text-slate-400">July 2025 – Present</div>
+              <div class="italic text-slate-300 mt-1">Syracuse University School of Information Studies — Syracuse, NY</div>
+              <ul class="mt-3 space-y-2 text-[15px] text-slate-300 list-disc list-inside"></ul>
+            </article>
+
+            <!-- Data Science Researcher -->
+            <article class="relative pl-8 pb-10">
+              <span class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-white dark:bg-gray-950 ring-2 ring-sky-600"></span>
+              <h3 class="font-semibold">Data Science Researcher (Part-time)</h3>
+              <div class="text-sm text-slate-400">Jan 2025 – May 2025</div>
+              <div class="italic text-slate-300 mt-1">NEXIS Student Technology Lab — Syracuse, NY · On-site</div>
+              <ul class="mt-3 space-y-2 text-[15px] text-slate-300 list-disc list-inside"></ul>
+              <div class="mt-2 text-sm text-slate-400">Skills: Data Research · Statistical Data Analysis</div>
+            </article>
+
+            <!-- Teaching Assistant -->
+            <article class="relative pl-8 pb-10">
+              <span class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-white dark:bg-gray-950 ring-2 ring-sky-600"></span>
+              <h3 class="font-semibold">Teaching Assistant (Part-time)</h3>
+              <div class="text-sm text-slate-400">Sep 2024 – Apr 2025</div>
+              <div class="italic text-slate-300 mt-1">Syracuse University — Martin J. Whitman School of Management</div>
+              <ul class="mt-3 space-y-2 text-[15px] text-slate-300 list-disc list-inside"></ul>
+              <div class="mt-2 text-sm text-slate-400">Skills: Data Management · R · Data Analysis · Data Manipulation</div>
+            </article>
+
+            <!-- AI Researcher -->
+            <article class="relative pl-8 pb-10">
+              <span class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-white dark:bg-gray-950 ring-2 ring-sky-600"></span>
+              <h3 class="font-semibold">AI Researcher</h3>
+              <div class="text-sm text-slate-400">Jun 2024 – Aug 2024</div>
+              <div class="italic text-slate-300 mt-1">HeadOn — New York, United States · Remote</div>
+              <ul class="mt-3 space-y-2 text-[15px] text-slate-300 list-disc list-inside"></ul>
+              <div class="mt-2 text-sm text-slate-400">Skills: Reinforcement Learning · NLP · LLMs · Neo4j · Deep Learning · ML</div>
+            </article>
+
+            <!-- Data Scientist -->
+            <article class="relative pl-8 pb-10">
+              <span class="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-white dark:bg-gray-950 ring-2 ring-sky-600"></span>
+              <h3 class="font-semibold">Data Scientist</h3>
+              <div class="text-sm text-slate-400">Jun 2022 – Jul 2023</div>
+              <div class="italic text-slate-300 mt-1">NeoSOFT — Mumbai, Maharashtra, India</div>
+              <ul class="mt-3 space-y-2 text-[15px] text-slate-300 list-disc list-inside"></ul>
+              <div class="mt-2 text-sm text-slate-400">Skills: Python · SQL · ETL Pipeline · Statistical analysis · ML</div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-12 border-t border-gray-200 dark:border-gray-800">
+    <div class="container-narrow">
+      <div class="flex items-end justify-between gap-4 flex-wrap">
+        <div>
+          <h2 class="text-3xl font-bold">Projects</h2>
+          <p class="text-gray-600 dark:text-gray-400">
+            A selection of end-to-end builds and research-grade experiments.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <input id="search" placeholder="Search projects…"
+            class="rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2" />
+          <select id="tagFilter"
+            class="rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2">
+            <option value="">All tags</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="projectGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
+
+      <!-- Shows only when opened with file:// -->
+      <div id="projWarn" class="mt-4 text-sm text-amber-500 hidden">
+        Tip: If you’re opening this with <code>file://</code>, run a local server
+        (e.g., <code>python -m http.server</code>) so <code>projects.json</code> can load.
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="py-16 border-t border-gray-200 dark:border-gray-800">
+    <div class="container-narrow grid md:grid-cols-3 gap-6">
+      <div class="card p-6">
+        <h3 class="font-semibold text-lg mb-3">Languages</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">R</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Java</span>
+          <span class="tag">C++</span>
+        </div>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-semibold text-lg mb-3">ML / GenAI</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag">PyTorch</span>
+          <span class="tag">scikit-learn</span>
+          <span class="tag">LangChain</span>
+          <span class="tag">Hugging Face</span>
+          <span class="tag">RAG</span>
+          <span class="tag">CLIP</span>
+          <span class="tag">GANs</span>
+          <span class="tag">LLM Eval</span>
+        </div>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-semibold text-lg mb-3">Data / Cloud / Ops</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag">AWS</span>
+          <span class="tag">Azure</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Airflow</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">MongoDB</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="py-16 border-t border-gray-200 dark:border-gray-800">
+    <div class="container-narrow">
+      <h2 class="text-3xl font-bold">Certifications</h2>
+      <p class="text-gray-400">Industry credentials that back my applied work.</p>
+      <div class="grid sm:grid-cols-2 gap-6 mt-6">
+        <div class="card p-6 flex items-center gap-4">
+          <svg width="64" height="64" viewBox="0 0 128 128" class="shrink-0" aria-hidden="true">
+            <rect width="128" height="128" rx="20" fill="#232F3E"/>
+            <path d="M18 90c20 16 72 16 92 0" stroke="#FF9900" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <text x="64" y="60" text-anchor="middle" font-family="Inter,Arial" font-weight="700" font-size="26" fill="#fff">AWS</text>
+          </svg>
+          <div>
+            <div class="font-semibold">AWS Machine Learning Engineer — Associate</div>
+            <div class="text-sm text-gray-500">Amazon Web Services</div>
+          </div>
+        </div>
+        <div class="card p-6 flex items-center gap-4">
+          <svg width="64" height="64" viewBox="0 0 128 128" class="shrink-0" aria-hidden="true">
+            <rect width="128" height="128" rx="20" fill="#0F62FE"/>
+            <text x="64" y="58" text-anchor="middle" font-family="Inter,Arial" font-weight="800" font-size="28" fill="#fff">IBM</text>
+          </svg>
+          <div>
+            <div class="font-semibold">IBM Data Science and AI</div>
+            <div class="text-sm text-gray-500">IBM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume" class="py-16 border-t border-gray-200 dark:border-gray-800">
+    <div class="container-narrow">
+      <h2 class="text-3xl font-bold">Resume</h2>
+      <p class="text-gray-400">Replace <code>assets/resume.pdf</code> with your latest PDF. The viewer below will auto-load.</p>
+      <div class="mt-4 card p-4">
+        <iframe id="resumeFrame" class="w-full h-[720px] rounded-xl" src="assets/resume.pdf" title="Resume"></iframe>
+        <div id="noResume" class="p-4 text-sm text-amber-500 hidden">No resume found in <code>assets/resume.pdf</code>. Add your file to enable the viewer.</div>
+      </div>
+      <div class="mt-4 flex gap-3 items-center">
+        <a class="btn" href="assets/resume.pdf" download>Download PDF</a>
+        <a href="https://www.linkedin.com/in/vaibhav-vikas-gaikwad/" target="_blank" rel="noreferrer"
+           class="icon-btn ring-soft border border-gray-700/50 hover:bg-gray-800 transition" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zM8 8h3.8v2.05h.05C12.6 8.9 14.1 8 16.25 8 21 8 22 10.95 22 15.18V23h-4v-6.5c0-1.55-.03-3.54-2.16-3.54-2.16 0-2.49 1.69-2.49 3.43V23H8V8z"/></svg>
+        </a>
+        <a href="https://github.com/vaibhavgaikwad7" target="_blank" rel="noreferrer"
+           class="icon-btn ring-soft border border-gray-700/50 hover:bg-gray-800 transition" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.33-1.77-1.33-1.77-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.07 1.83 2.82 1.3 3.5.99.11-.78.42-1.3.77-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.9 1.24 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.83.58A12 12 0 0 0 12 .5z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16 border-t border-gray-200 dark:border-gray-800">
+    <div class="container-narrow">
+      <h2 class="text-3xl font-bold">Get in touch</h2>
+      <div class="grid md:grid-cols-3 gap-8 items-start mt-4">
+        <div class="card p-6">
+          <div class="text-sm text-gray-500">Email</div>
+          <a class="mt-1 block text-lg font-semibold hover:text-sky-400" href="mailto:gaikwadvaibhav114@gmail.com">gaikwadvaibhav114@gmail.com</a>
+        </div>
+        <div class="card p-6">
+          <div class="text-sm text-gray-500">Phone</div>
+          <a class="mt-1 block text-lg font-semibold hover:text-sky-400" href="tel:+13159522931">+1 (315) 952-2931</a>
+        </div>
+        <div class="card p-6">
+          <div class="text-sm text-gray-500">Links</div>
+          <div class="mt-3 flex gap-3">
+            <a href="https://www.linkedin.com/in/vaibhav-vikas-gaikwad/" target="_blank" rel="noreferrer"
+               class="icon-btn ring-soft border border-gray-700/50 hover:bg-gray-800 transition" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zM8 8h3.8v2.05h.05C12.6 8.9 14.1 8 16.25 8 21 8 22 10.95 22 15.18V23h-4v-6.5c0-1.55-.03-3.54-2.16-3.54-2.16 0-2.49 1.69-2.49 3.43V23H8V8z"/></svg>
+            </a>
+            <a href="https://github.com/vaibhavgaikwad7" target="_blank" rel="noreferrer"
+               class="icon-btn ring-soft border border-gray-700/50 hover:bg-gray-800 transition" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.33-1.77-1.33-1.77-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.07 1.83 2.82 1.3 3.5.99.11-.78.42-1.3.77-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.9 1.24 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.83.58A12 12 0 0 0 12 .5z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <form id="contactForm" class="card p-6 mt-8 space-y-4" action="#" method="POST">
+        <div class="grid md:grid-cols-2 gap-4">
+          <input class="rounded-xl border border-gray-700 bg-gray-900 px-3 py-2" name="name" placeholder="Your name" required />
+          <input class="rounded-xl border border-gray-700 bg-gray-900 px-3 py-2" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <input class="rounded-xl border border-gray-700 bg-gray-900 px-3 py-2 w-full" name="subject" placeholder="Subject" />
+        <textarea class="rounded-xl border border-gray-700 bg-gray-900 px-3 py-2 w-full h-32" name="message" placeholder="Message" required></textarea>
+        <div class="flex items-center gap-3">
+          <button class="btn" type="submit">Send message</button>
+          <span id="formMsg" class="text-sm text-gray-400"></span>
+        </div>
+        <p class="text-xs text-gray-500">Tip: To enable real submissions, replace <code>onSubmit</code> logic in <strong>script.js</strong> with your Formspree/Netlify endpoint.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="py-10 text-center text-sm text-gray-500">
+    © <span id="year"></span> Vaibhav Vikas Gaikwad. Built with Tailwind. All rights reserved.
+  </footer>
+
+  <!-- Project Details Modal -->
+  <div id="projModal" class="modal-backdrop" aria-hidden="true">
+    <div id="projModalDialog" class="modal-card card p-0" role="dialog" aria-modal="true" aria-labelledby="projModalTitle">
+      <div class="relative">
+        <img id="projModalImg" class="w-full max-h-[440px] object-cover" alt="">
+        <button id="projModalClose"
+                class="icon-btn ring-soft border border-gray-700/50 hover:bg-gray-800 transition absolute top-3 right-3"
+                aria-label="Close dialog">✕</button>
+      </div>
+      <div class="p-6">
+        <h3 id="projModalTitle" class="text-2xl font-semibold"></h3>
+        <p id="projModalDesc" class="mt-2 text-gray-600 dark:text-gray-400"></p>
+        <ul id="projModalList" class="mt-4 list-disc list-inside text-sm text-gray-700 dark:text-gray-300 space-y-1"></ul>
+        <div id="projModalTags" class="mt-4 flex flex-wrap gap-2"></div>
+        <div id="projModalLinks" class="mt-5 flex gap-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Inline helper ONLY: file:// warning + year. Theme logic lives in script.js -->
+  <script>
+    if (location.protocol === 'file:') {
+      document.getElementById('projWarn')?.classList.remove('hidden');
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Your main JS (contains theme toggle + projects rendering + modal) -->
+  <script src="script.js?v=5"></script>
+</body>
+</html>

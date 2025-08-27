@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
+  <rect width="100%" height="100%" fill="#111827"/>
+  <circle cx="320" cy="240" r="160" fill="#1f2937"/>
+  <text x="50%" y="255" text-anchor="middle" dominant-baseline="middle"
+        font-family="Inter,Segoe UI,Arial" font-weight="700" font-size="120" fill="#f9fafb">
+    VG
+  </text>
+  <text x="50%" y="400" text-anchor="middle" dominant-baseline="middle"
+        font-family="Inter,Segoe UI,Arial" font-weight="500" font-size="28" fill="#9ca3af">
+    Vaibhav Vikas Gaikwad
+  </text>
+</svg>

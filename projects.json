@@ -1,0 +1,182 @@
+[
+
+  {
+    "title": "Cold Email Generator (LLM + RAG)",
+    "description": "Streamlit app that parses job pages, matches skills via ChromaDB, and generates tailored emails with LLaMA3 via Groq.",
+    "highlights": [
+      "LangChain WebBaseLoader for job pages",
+      "RAG-style portfolio match",
+      "Downloads + JSON transparency"
+    ],
+    "tech": [
+      "Python",
+      "Streamlit",
+      "LangChain",
+      "RAG"
+    ],
+    "github": "https://github.com/vaibhavgaikwad7/Cold-Email-Generator",
+    "demo": "",
+    "image": "assets/projects/cold-email-generator.svg"
+  },
+  {
+    "title": "Connecticut Real Estate Price Forecasting",
+    "description": "Two-decade CT sales forecasting; RF (R\u00b2\u22480.92) on log prices, Prophet for seasonality, SARIMA for short-term volume.",
+    "highlights": [
+      "Random Forest with low RMSE",
+      "Prophet seasonal trend analysis",
+      "SARIMA for short-term fluctuations"
+    ],
+    "tech": [
+      "Python",
+      "Prophet",
+      "SARIMA",
+      "Random Forest"
+    ],
+    "github": "https://github.com/vaibhavgaikwad7/Connecticut-Real-Estate-Price-Forecasting",
+    "demo": "",
+    "image": "assets/projects/ct-real-estate-forecasting.svg"
+  },
+  {
+    "title": "AI Job Market Trends in USA (Tableau)",
+    "description": "Pipeline + Tableau dashboard benchmarking AI-role salaries from scraped LinkedIn data and synthetic estimates.",
+    "highlights": [
+      "Custom Python scraper + salary normalization",
+      "Geospatial heatmaps, time trends, and filters",
+      "Career planning & recruiter-friendly design"
+    ],
+    "tech": [
+      "Python",
+      "Tableau",
+      "Web Scraping"
+    ],
+    "github": "https://github.com/vaibhavgaikwad7/AI-Job-Market-Trends-in-USA-using-Tableau",
+    "demo": "",
+    "image": "assets/projects/ai-job-market-trends-tableau.svg"
+  },
+  {
+    "title": "Portfolio Optimization (BiLSTM-CNN + Attention)",
+    "description": "Deep-learning portfolio optimizer on OHLCV with BiLSTM-CNN + attention; visualizes candlesticks and performance.",
+    "highlights": [
+      "Backtesting with Sharpe and drawdown metrics",
+      "Yahoo Finance ingestion and feature engineering",
+      "Visualization suite (candlesticks, equity curve)"
+    ],
+    "tech": [
+      "Python",
+      "PyTorch",
+      "LSTM",
+      "Attention"
+    ],
+    "github": "https://github.com/vaibhavgaikwad7/Portfolio-Optimization-Using-Bidirectional-CNN-LSTM-with-Attention-Mechanism",
+    "demo": "",
+    "image": "assets/projects/portfolio-optimization-bilstm-cnn.svg"
+  },
+  {
+    "title": "Weather Impact on NYC Collisions",
+    "description": "Explores how weather affects NYC collision frequency and severity using Meteostat + NYC collision datasets.",
+    "highlights": [
+      "Integrated weather and collision datasets",
+      "Analyzed severity, contributing factors, vehicle types",
+      "Precipitation intensity linked with spikes"
+    ],
+    "tech": [
+      "Python",
+      "Pandas",
+      "Meteostat",
+      "EDA"
+    ],
+    "github": "https://github.com/vaibhavgaikwad7/Impact-of-weather-conditions-on-motor-vehicle-collisions-in-NYC",
+    "demo": "",
+    "image": "assets/projects/weather-vs-collisions-nyc.svg"
+  },
+  {
+    "title": "Stroke Prediction using ML (XGBoost)",
+    "description": "Predicts stroke risk with gradient boosting; balanced features and ROC-AUC evaluation.",
+    "highlights": [
+      "XGBoost baseline + hyperparameter tuning",
+      "Feature importance and calibration checks",
+      "ROC-AUC and PR curves for evaluation"
+    ],
+    "tech": [
+      "Python",
+      "XGBoost",
+      "Pandas"
+    ],
+    "github": "https://github.com/vaibhavgaikwad7/Stroke-Prediction-using-ML",
+    "demo": "",
+    "image": "assets/projects/stroke-prediction-using-ml.svg"
+  },
+  {
+    "title": "Credibility Detection of Health Web Blogs (XAI)",
+    "description": "Assesses credibility of health blogs via ML, PageRank, and explainable AI across features like site metrics, author credibility, and ratings.",
+    "highlights": [
+      "Hybrid ML with PageRank-inspired signals",
+      "Explainable AI for model transparency",
+      "Multi-factor scoring of content and metadata"
+    ],
+    "tech": [
+      "Python",
+      "XAI",
+      "PageRank",
+      "scikit-learn"
+    ],
+    "github": "https://github.com/vaibhavgaikwad7/Credibility-Detection-of-Health-Web-Blogs-Using-Explainable-AI",
+    "demo": "",
+    "image": "assets/projects/credibility-detection-xai.svg"
+  },
+  {
+    "title": "Movie Review Sentiment Analysis",
+    "description": "NLP pipeline on Kaggle reviews: cleaning, tokenization, and classification of positive vs. negative sentiment.",
+    "highlights": [
+      "Text preprocessing with tokenization & vectorization",
+      "Compared classic ML classifiers",
+      "Reported precision/recall/F1 for transparency"
+    ],
+    "tech": [
+      "Python",
+      "NLP",
+      "scikit-learn"
+    ],
+    "github": "https://github.com/vaibhavgaikwad7/Sentiment-Analysis-of-Movie-Reviews-Using-Kaggle-Dataset",
+    "demo": "",
+    "image": "assets/projects/movie-review-sentiment-analysis.svg"
+  },
+  {
+    "title": "Energy Consumption Predictor (NC)",
+    "description": "Merged housing, energy, and weather datasets to forecast North Carolina energy usage; deployed a Shiny app for current vs. future comparison (Linear Regression ~89%).",
+    "highlights": [
+      "Data fusion of housing, energy, and weather series",
+      "Linear Regression reached ~89% accuracy",
+      "Interactive Shiny app for scenario comparison"
+    ],
+    "tech": [
+      "R",
+      "Shiny",
+      "Linear Regression",
+      "Weather"
+    ],
+    "github": "https://github.com/vaibhavgaikwad7/Energy-Consumption-Predictor",
+    "demo": "",
+    "image": "assets/projects/energy-consumption-predictor.svg"
+  },
+  {
+    "title": "Pandemic Times \u2014 COVID Analysis Website",
+    "description": "Informative COVID-19 website combining ML and Weibull modeling for India/Maharashtra trends, plus a hospital locator and dual ML vs. distribution views.",
+    "highlights": [
+      "Implemented incidence trend modeling via ML and Weibull distribution",
+      "Built hospital locator for nearby facilities",
+      "Switchable visualizations: model-based vs distribution-based"
+    ],
+    "tech": [
+      "Python",
+      "Pandas",
+      "Weibull",
+      "Flask",
+      "Leaflet"
+    ],
+    "github": "https://github.com/vaibhavgaikwad7/Pandemic-Times-Covid-Analysis-Website",
+    "demo": "",
+    "image": "assets/projects/pandemic-times-covid-analysis.svg"
+  }
+  
+]
