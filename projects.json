@@ -16,7 +16,7 @@
     ],
     "github": "https://github.com/vaibhavgaikwad7/Cold-Email-Generator",
     "demo": "",
-    "image": "assets/projects/cold-email-generator.svg"
+    "image": "assets/projects/Cold-Email.jpg"
   },
   {
     "title": "Connecticut Real Estate Price Forecasting",
@@ -34,7 +34,7 @@
     ],
     "github": "https://github.com/vaibhavgaikwad7/Connecticut-Real-Estate-Price-Forecasting",
     "demo": "",
-    "image": "assets/projects/ct-real-estate-forecasting.svg"
+    "image": "assets/projects/real-estate.jpg"
   },
   {
     "title": "AI Job Market Trends in USA (Tableau)",
@@ -51,7 +51,7 @@
     ],
     "github": "https://github.com/vaibhavgaikwad7/AI-Job-Market-Trends-in-USA-using-Tableau",
     "demo": "",
-    "image": "assets/projects/ai-job-market-trends-tableau.svg"
+    "image": "assets/projects/tableau.jpg"
   },
   {
     "title": "Portfolio Optimization (BiLSTM-CNN + Attention)",
@@ -69,7 +69,7 @@
     ],
     "github": "https://github.com/vaibhavgaikwad7/Portfolio-Optimization-Using-Bidirectional-CNN-LSTM-with-Attention-Mechanism",
     "demo": "",
-    "image": "assets/projects/portfolio-optimization-bilstm-cnn.svg"
+    "image": "assets/projects/DeepLearning.jpg"
   },
   {
     "title": "Weather Impact on NYC Collisions",
@@ -87,7 +87,7 @@
     ],
     "github": "https://github.com/vaibhavgaikwad7/Impact-of-weather-conditions-on-motor-vehicle-collisions-in-NYC",
     "demo": "",
-    "image": "assets/projects/weather-vs-collisions-nyc.svg"
+    "image": "assets/projects/scripting.jpg"
   },
   {
     "title": "Stroke Prediction using ML (XGBoost)",
@@ -104,7 +104,7 @@
     ],
     "github": "https://github.com/vaibhavgaikwad7/Stroke-Prediction-using-ML",
     "demo": "",
-    "image": "assets/projects/stroke-prediction-using-ml.svg"
+    "image": "assets/projects/stroke.jpg"
   },
   {
     "title": "Credibility Detection of Health Web Blogs (XAI)",
@@ -122,7 +122,7 @@
     ],
     "github": "https://github.com/vaibhavgaikwad7/Credibility-Detection-of-Health-Web-Blogs-Using-Explainable-AI",
     "demo": "",
-    "image": "assets/projects/credibility-detection-xai.svg"
+    "image": "assets/projects/aml.jpg"
   },
   {
     "title": "Movie Review Sentiment Analysis",
@@ -139,7 +139,7 @@
     ],
     "github": "https://github.com/vaibhavgaikwad7/Sentiment-Analysis-of-Movie-Reviews-Using-Kaggle-Dataset",
     "demo": "",
-    "image": "assets/projects/movie-review-sentiment-analysis.svg"
+    "image": "assets/projects/nlp.jpg"
   },
   {
     "title": "Energy Consumption Predictor (NC)",
@@ -157,7 +157,7 @@
     ],
     "github": "https://github.com/vaibhavgaikwad7/Energy-Consumption-Predictor",
     "demo": "",
-    "image": "assets/projects/energy-consumption-predictor.svg"
+    "image": "assets/projects/ids.jpg"
   },
   {
     "title": "Pandemic Times \u2014 COVID Analysis Website",
@@ -176,7 +176,7 @@
     ],
     "github": "https://github.com/vaibhavgaikwad7/Pandemic-Times-Covid-Analysis-Website",
     "demo": "",
-    "image": "assets/projects/pandemic-times-covid-analysis.svg"
+    "image": "assets/projects/covid.jpg"
   }
   
 ]
