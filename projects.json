@@ -1,6 +1,32 @@
 [
 
   {
+    "title": "HealControl — Local-First DevOps Agent",
+    "description": "MCP-powered DevOps agent that autonomously detects test failures, diagnoses bugs via IBM Granite, applies fixes, verifies, and opens GitHub PRs — all locally.",
+    "highlights": [
+      "13 MCP tools for full detect → fix → verify → ship loop",
+      "IBM Granite (watsonx.ai) for AI-powered root cause analysis",
+      "Multi-app configuration with healcontrol.json registry"
+    ],
+    "tech": ["Python", "MCP", "FastMCP", "IBM watsonx", "Git"],
+    "github": "https://github.com/vaibhavgaikwad7/healcontrol",
+    "demo": "",
+    "image": "assets/projects/hc.jpg"
+  },
+  {
+    "title": "Document AI Pipeline (Scientific PDFs)",
+    "description": "Hybrid heuristics + LLM ensemble CLI system for extracting structured metadata, summaries, and findings from scientific PDFs with Crossref validation.",
+    "highlights": [
+      "LLM ensemble (Anthropic, OpenAI, Ollama) with fusion scoring",
+      "Crossref authority lookup with title similarity gating",
+      "Dockerized CLI with GROBID and Unstructured parser fallbacks"
+    ],
+    "tech": ["TypeScript", "Node.js", "Docker", "LLM", "Crossref API"],
+    "github": "https://github.com/vaibhavgaikwad7/CLI-AI-pipeline-for-Scientific-paper-analysis",
+    "demo": "",
+    "image": "assets/projects/doc-ai.jpg"
+  },
+  {
     "title": "Cold Email Generator (LLM + RAG)",
     "description": "Streamlit app that parses job pages, matches skills via ChromaDB, and generates tailored emails with LLaMA3 via Groq.",
     "highlights": [
@@ -177,6 +203,19 @@
     "github": "https://github.com/vaibhavgaikwad7/Pandemic-Times-Covid-Analysis-Website",
     "demo": "",
     "image": "assets/projects/covid.jpg"
+  },
+  {
+    "title": "Credit Card Fraud Detection",
+    "description": "ML pipeline comparing 5 supervised + 3 unsupervised models on 284K transactions (0.17% fraud), with SMOTE, data leakage prevention, and PR-AUC evaluation.",
+    "highlights": [
+      "XGBoost + Stacking Ensemble with PR-AUC as primary metric",
+      "Data leakage fix: split → scale → SMOTE enforced order",
+      "Refactored from notebook to production-style pipeline with config dataclass"
+    ],
+    "tech": ["Python", "XGBoost", "scikit-learn", "SMOTE", "mlxtend"],
+    "github": "https://github.com/vaibhavgaikwad7/Credit_Fraud_Detection",
+    "demo": "",
+    "image": "assets/projects/ccfraud.jpg"
   }
   
 ]
