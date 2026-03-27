@@ -10,10 +10,12 @@
   const stored    = localStorage.getItem('theme');
   const initial   = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   rootEl.classList.toggle('dark', initial === 'dark');
+  if (toggleBtn) toggleBtn.setAttribute('aria-pressed', initial === 'dark' ? 'true' : 'false');
 
   toggleBtn && toggleBtn.addEventListener('click', () => {
     const isDark = rootEl.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    toggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
     const icon = document.getElementById('themeIcon');
     if (icon) icon.textContent = isDark ? '☾' : '☀';
   });
@@ -179,6 +181,9 @@
     const safeDesc  = p.description || '';
     const safeImg   = p.image || '';
     const highlights = Array.isArray(p.highlights) ? p.highlights : [];
+    
+    // Determine if this project has an architecture diagram
+    const hasArch = ['HealControl', 'Document AI Pipeline', 'Credit Card Fraud Detection', 'Cold Email Generator'].some(t => safeTitle.includes(t));
 
     card.innerHTML = `
       <div class="relative">
@@ -203,11 +208,14 @@
 
       <div class="mt-3 flex flex-wrap gap-2" data-tags></div>
 
-      <div class="mt-4 flex items-center gap-3">
+      <div class="mt-4 flex items-center gap-3 flex-wrap">
         ${p.github ? `
           <a class="btn-ghost" target="_blank" rel="noreferrer" href="${p.github}" aria-label="GitHub link">GitHub</a>` : ''}
         ${p.demo ? `<a class="btn" target="_blank" rel="noreferrer" href="${p.demo}" aria-label="Live demo">Live Demo</a>` : ''}
+        ${hasArch ? `<button class="expand-arch-btn" type="button" aria-expanded="false">View Architecture</button>` : ''}
       </div>
+      
+      ${hasArch ? `<div class="proj-arch" role="region" aria-label="Architecture diagram"></div>` : ''}
     `;
 
     // Tags
@@ -239,7 +247,72 @@
       }
     });
 
+    // Architecture diagram toggle
+    const expandBtn = card.querySelector('.expand-arch-btn');
+    if (expandBtn) {
+      const archDiv = card.querySelector('.proj-arch');
+      
+      // Generate architecture diagram SVG based on project title
+      const archSvg = generateArchitectureSVG(safeTitle);
+      if (archSvg && archDiv) {
+        archDiv.innerHTML = archSvg;
+      }
+      
+      expandBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        archDiv.classList.toggle('open');
+        const isOpen = archDiv.classList.contains('open');
+        expandBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        expandBtn.textContent = isOpen ? 'Hide Architecture' : 'View Architecture';
+      });
+    }
+
     return card;
+  };
+
+  // Generate architecture SVGs for specific projects
+  const generateArchitectureSVG = (title) => {
+    let nodes = [];
+    
+    if (title.includes('HealControl')) {
+      nodes = ['User', 'MCP Server', 'IBM Granite', 'Git', 'GitHub PR'];
+    } else if (title.includes('Document AI Pipeline')) {
+      nodes = ['PDF Input', 'Parser', 'LLM Ensemble', 'Crossref', 'JSON Output'];
+    } else if (title.includes('Credit Card Fraud')) {
+      nodes = ['CSV Data', 'Split', 'Scale', 'SMOTE', 'Train', 'Evaluate'];
+    } else if (title.includes('Cold Email')) {
+      nodes = ['Job URL', 'WebLoader', 'ChromaDB', 'LLaMA3/Groq', 'Email'];
+    }
+    
+    if (!nodes.length) return '';
+    
+    const nodeWidth = 80;
+    const nodeHeight = 40;
+    const spacing = 110;
+    const totalWidth = (nodes.length - 1) * spacing + nodeWidth;
+    const height = 140;
+    
+    let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${totalWidth} ${height}" style="width:100%;max-width:100%;border:1px solid rgb(107 114 128);border-radius:0.5rem;background:linear-gradient(to right,rgba(15,23,42,0.3),rgba(15,23,42,0.1))">`;
+    
+    // Draw connecting lines with dashes
+    for (let i = 0; i < nodes.length - 1; i++) {
+      const x1 = i * spacing + nodeWidth / 2;
+      const x2 = (i + 1) * spacing + nodeWidth / 2;
+      svg += `<line x1="${x1}" y1="70" x2="${x2}" y2="70" stroke="rgb(100,116,139)" stroke-width="2" stroke-dasharray="4,4" /></svg>`;
+      svg += `<polygon points="${x2-8},65 ${x2-8},75 ${x2},70" fill="rgb(100,116,139)" /></svg>`;
+    }
+    
+    // Draw nodes
+    nodes.forEach((node, i) => {
+      const x = i * spacing;
+      svg += `<g>
+        <rect x="${x}" y="50" width="${nodeWidth}" height="40" rx="4" fill="none" stroke="rgb(14,165,233)" stroke-width="2" />
+        <text x="${x + nodeWidth/2}" y="75" text-anchor="middle" font-size="11" fill="rgb(148,163,184)" font-family="Inter,Arial" font-weight="500">${node}</text>
+      </g>`;
+    });
+    
+    return svg + '</svg>';
   };
 
   const render = () => {
@@ -313,3 +386,55 @@
 
   loadProjects();
 })();
+
+/* ===== Page load animation ===== */
+document.fonts.ready.then(() => { 
+  document.body.classList.add('loaded'); 
+});
+
+/* ===== Contact Form with Formspree ===== */
+const contactForm = document.getElementById('contactForm');
+const formMsg = document.getElementById('formMsg');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formAction = contactForm.getAttribute('action');
+    
+    // Check if user has set up Formspree ID
+    if (formAction.includes('YOUR_FORMSPREE_ID')) {
+      formMsg.textContent = '⚠️ Please update your Formspree ID in the form action';
+      formMsg.style.color = '#f97316';
+      return;
+    }
+    
+    const btn = contactForm.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    formMsg.textContent = '';
+    
+    try {
+      const response = await fetch(formAction, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      
+      if (response.ok) {
+        formMsg.textContent = '✔ Thanks! I\'ll get back to you soon.';
+        formMsg.style.color = '#34d399';
+        contactForm.reset();
+        btn.textContent = 'Message sent!';
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      formMsg.textContent = '✖ Something went wrong. Email me directly instead.';
+      formMsg.style.color = '#f87171';
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
+  });
+}
